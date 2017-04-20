@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MebookApp</title>
+    <%= csrf_meta_tags %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  	<nav class="navbar navbar-default navbar-fixed-to-top container-fluid">
+	    <ul class="nav navbar-nav navbar-left">
+	    	<%= image_tag('logo.jpg', class: "img-rounded logo", width: "auto", height: "50")%>
+	    </ul>
+	    <ul class="nav navbar-nav navbar-right">
+	    	<% $users.each do |user| %>
+					<p>Welcome,<%= user.first_name%></p>
+	    		<div><%= link_to image_tag(user.image.url), user_path(user) %></div>
+	    	<%end%>
+	    </ul>
+    </nav>
+    <%= yield %>
+  </body>
+</html>
